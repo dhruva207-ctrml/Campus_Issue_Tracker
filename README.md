@@ -27,3 +27,9 @@ PIN is **4321**
 The issue table supports searching and filtering so admins can quickly find what they need.A text search box matches against titles and descriptions, and dropdowns filter by status and category, allowing views such as “all cleanliness issues that are still open”. Each row shows the vote count and a timeline column with three lines: when the issue was opened, when it first moved to “In Progress”, and when it was finally marked “Resolved”. Buttons in the last column let admins change the status to “In Progress” or “Resolved” and, when they do so for the first time, the app automatically fills the corresponding timestamp fields (inprogressAt and resolvedAt) and writes them back to Firebase.
 
 Under the hood, the app uses the Firebase Web SDK (modular form, loaded from CDN) to connect the client directly to Realtime Database. On startup it calls  initializeApp   with the project configuration, creates a reference to the issues path and attaches a single  onValue listener so that any change—new issue, vote update, status change or deletion—is reflected immediately in the local  currentEntries array and in the rendered UI.Because everything is implemented in plain HTML, CSS and JavaScript without any custom backend server, the project is easy to deploy as a static site and runs comfortably within the free tier of Firebase.
+
+
+ for live demo
+ https://dhruva207-ctrml.github.io/Campus_Issue_Tracker/
+ pin
+ 4321

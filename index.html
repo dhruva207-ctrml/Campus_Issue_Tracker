@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Campus Issue Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="app-container">
+      <div class="card">
+        <div class="title-bar">
+          <h1>Campus Issue Tracker</h1>
+          <span>Realtime · Firebase</span>
+        </div>
+
+        <!-- Form students use to submit a new issue -->
+        <form id="issue-form">
+          <div>
+            <label for="title">Issue title</label>
+            <input
+              type="text"
+              id="title"
+              placeholder="Broken light in CS block"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="description">Description</label>
+            <textarea
+              id="description"
+              rows="3"
+              placeholder="Explain the problem and exact location"
+              required
+            ></textarea>
+          </div>
+
+          <div>
+            <label for="category">Category</label>
+            <select id="category">
+              <option value="electricity">Electricity</option>
+              <option value="water">Water</option>
+              <option value="cleanliness">Cleanliness</option>
+              <option value="infrastructure">Infrastructure</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit">Submit Issue</button>
+        </form>
+
+        <!-- List of latest issues shown to students -->
+        <h2 class="section-heading">Recent issues</h2>
+        <div id="issues-list"></div>
+      </div>
+    </div>
+
+    <!-- Simple admin login section using a PIN -->
+    <h2 class="admin-heading">Admin Access</h2>
+    <form id="admin-pin-form">
+      <input
+        type="password"
+        id="adminPinInput"
+        placeholder="Enter admin PIN"
+        maxlength="6"
+        required
+      />
+      <button type="submit">Unlock</button>
+    </form>
+
+    <!-- Full admin view for search, filters, analytics and table -->
+    <div id="adminSection" style="display: none;">
+      <h2>All Issues (Admin View)</h2>
+
+      <!-- Small analytics bar -->
+      <div id="statsBar">
+        <div class="stat-card">
+          <span class="stat-label">Open</span>
+          <span id="statOpen" class="stat-value">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">In Progress</span>
+          <span id="statProgress" class="stat-value">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Resolved</span>
+          <span id="statResolved" class="stat-value">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Avg Age (hrs)</span>
+          <span id="statAge" class="stat-value">0</span>
+        </div>
+      </div>
+
+      <!-- Search and filters -->
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by title or description"
+      />
+
+      <select id="statusFilter">
+        <option value="all">All statuses</option>
+        <option value="Open">Open</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Resolved">Resolved</option>
+      </select>
+
+      <select id="categoryFilter">
+        <option value="all">All categories</option>
+        <option value="electricity">Electricity</option>
+        <option value="water">Water</option>
+        <option value="cleanliness">Cleanliness</option>
+        <option value="infrastructure">Infrastructure</option>
+        <option value="other">Other</option>
+      </select>
+
+      <table id="issuesTable" border="1">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Status</th>
+            <th>Votes</th>
+            <th>Timeline</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="issuesBody">
+          <!-- Rows are created dynamically in app.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
